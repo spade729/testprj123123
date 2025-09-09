@@ -1,41 +1,45 @@
 class OrderDataClass:
+    """объект заказ"""
     def __init__(self, orderId, amount):
-        self.orderId = orderId
-        self.amount = amount
+       """Конструктор
+
+       Args:
+           orderId: Ид заказа
+           amount: Сумма 
+       """
+       self.orderId = orderId
+       self.amount = amount
 
 
 class CustomerDataClass:
-    """_summary_
-    class CustomerDataClass
-
-    dl9 kjlnasdfolujhsdkjgbskdjg
+    """объект счетчик заказчика
     """
 
     def __init__(self, customerId, customerName):
-        """_summary_
+        """Конструктор
 
         Args:
-            customerId (_type_): _description_
-            customerName (_type_): _description_
-
-        konstr
+            customerId: Ид заказчика
+            customerName: Имя заказчика
         """
         self.CustomerId = customerId
         self.CustomerName = customerName
         self.Orders = []
 
     def AddOrder(self, orderObject):
-        """_summary_
-        adasd
+        """Добавить заказ
 
         Args:
-            orderObject (_type_): _description_
-
-        lklll
+            orderObject (OrderDataClass): объект заказа
         """
         self.Orders.append(orderObject)
 
     def GetTotalAmount(self):
+        """Подсчет общей суммы
+
+        Returns:
+           сумма
+        """
         total = 0
 
         #        if len(self.Orders) != 0:
@@ -46,13 +50,13 @@ class CustomerDataClass:
 
 
 def CalculateDiscount(customerObj):
-    """_summary_
+    """Расчет скидки
 
     Args:
-        customerObj (_type_): _description_
+        customerObj (CustomerDataClass): объект счетчик заказчика
 
     Returns:
-        _type_: _description_
+        Скидка
     """
     totalAmount = customerObj.GetTotalAmount()
     #    type(totalAmount) == 'Int' and
@@ -64,6 +68,11 @@ def CalculateDiscount(customerObj):
 
 
 def PrintCustomerReport(customerObj):
+    """Вывод отчета
+
+    Args:
+        customerObj (CustomerDataClass): объект счетчик заказчика
+    """
     print("Customer Report for:", customerObj.CustomerName)
     print("Total Orders:", len(customerObj.Orders))
     print("Total Amount:", customerObj.GetTotalAmount())

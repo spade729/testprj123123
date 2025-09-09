@@ -1,41 +1,42 @@
+"""DZ1."""
+
 class OrderDataClass:
-    """объект заказ"""
-    def __init__(self, orderId, amount):
-       """Конструктор
+    """объект заказ."""
+    def __init__(self, orderid, amount):
+       """Конструктор.
 
        Args:
-           orderId: Ид заказа
+           orderid: Ид заказа
            amount: Сумма 
        """
-       self.orderId = orderId
+       self.orderid = orderid
        self.amount = amount
 
 
 class CustomerDataClass:
-    """объект счетчик заказчика
-    """
+    """объект счетчик заказчика."""
 
-    def __init__(self, customerId, customerName):
-        """Конструктор
+    def __init__(self, customerid, customername):
+        """Конструктор.
 
         Args:
-            customerId: Ид заказчика
-            customerName: Имя заказчика
+            customerid: Ид заказчика
+            customername: Имя заказчика
         """
-        self.CustomerId = customerId
-        self.CustomerName = customerName
+        self.customerid = customerid
+        self.Customername = customername
         self.Orders = []
 
-    def AddOrder(self, orderObject):
-        """Добавить заказ
+    def addorder(self, orderobject):
+        """Добавить заказ.
 
         Args:
-            orderObject (OrderDataClass): объект заказа
+            orderobject (OrderDataClass): объект заказа
         """
-        self.Orders.append(orderObject)
+        self.Orders.append(orderobject)
 
-    def GetTotalAmount(self):
-        """Подсчет общей суммы
+    def gettotalamount(self):
+        """Подсчет общей суммы.
 
         Returns:
            сумма
@@ -49,50 +50,47 @@ class CustomerDataClass:
         return total
 
 
-def CalculateDiscount(customerObj):
-    """Расчет скидки
+def calculatediscount(customerobj):
+    """Расчет скидки.
 
     Args:
-        customerObj (CustomerDataClass): объект счетчик заказчика
+        customerobj (CustomerDataClass): объект счетчик заказчика
 
     Returns:
         Скидка
     """
-    totalAmount = customerObj.GetTotalAmount()
-    #    type(totalAmount) == 'Int' and
-    if totalAmount > 1000:
-        discount = totalAmount * 0.1
-    else:
-        discount = 0
+    totalamount = customerobj.gettotalamount()
+    discount = totalamount * 0.1 if totalamount > 1000 else 0
     return discount
 
 
-def PrintCustomerReport(customerObj):
-    """Вывод отчета
+def printcustomerreport(customerobj):
+    """Вывод отчета.
 
     Args:
-        customerObj (CustomerDataClass): объект счетчик заказчика
+        customerobj (CustomerDataClass): объект счетчик заказчика
     """
-    print("Customer Report for:", customerObj.CustomerName)
-    print("Total Orders:", len(customerObj.Orders))
-    print("Total Amount:", customerObj.GetTotalAmount())
-    print("Discount:", CalculateDiscount(customerObj))
-    if len(customerObj.Orders) != 0:
-        print("Average Order:", customerObj.GetTotalAmount() / len(customerObj.Orders))
+    print('Customer Report for:', customerobj.Customername)
+    print('Total Orders:', len(customerobj.Orders))
+    print('Total Amount:', customerobj.gettotalamount())
+    print('Discount:', calculatediscount(customerobj))
+    if len(customerobj.Orders) != 0:
+        print('Average Order:', customerobj.gettotalamount() / len(customerobj.Orders))
 
 
-def MainProgram():
-    c1 = CustomerDataClass(1, "SAP Customer")
+def mainprogram():
+    """Главная программа."""
+    c1 = CustomerDataClass(1, 'SAP Customer')
     o1 = OrderDataClass(101, 500)
     o2 = OrderDataClass(102, 800)
-    c1.AddOrder(o1)
-    c1.AddOrder(o2)
+    c1.addorder(o1)
+    c1.addorder(o2)
 
-    PrintCustomerReport(c1)
+    printcustomerreport(c1)
 
-    c2 = CustomerDataClass(2, "Empty Customer")
-    #    c2.AddOrder(o2)
-    PrintCustomerReport(c2)
+    c2 = CustomerDataClass(2, 'Empty Customer')
+    #    c2.addorder(o2)
+    printcustomerreport(c2)
 
 
-MainProgram()
+mainprogram()

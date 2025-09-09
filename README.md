@@ -1,3 +1,16 @@
-# dz
+# dz1
 
-Fm MainProgram() - запускает отчет по  
+## Основной скрипт
+
+~/src/testprj123123
+
+## Список классов
+
+- OrderDataClass - объект заказ
+- CustomerDataClass - объект счетчик заказчика
+
+## Список функций
+
+- mainprogram - Главная программа
+- calculatediscount - Расчет скидки
+- printcustomerreport - Вывод отчета
